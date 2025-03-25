@@ -53,11 +53,11 @@ The project follows a modular directory structure, clearly separating each booki
 
 ## 🎯 Key Features
 
-- ✅ Terminal-based interaction (CLI only)
-- ✅ Role-based access control (admin vs. basic user)
-- ✅ Simulated payment flow
-- ✅ Placeholder travel data with easy extensibility
-- ✅ JSON-based local data storage (can later be upgraded to databases/APIs)
+- 🔜 Terminal-based interaction (CLI only)
+- 🔜 Role-based access control (admin vs. basic user)
+- 🔜 Simulated payment flow
+- 🔜 Placeholder travel data with easy extensibility
+- 🔜 JSON-based local data storage (can later be upgraded to databases/APIs)
 
 ---
 
