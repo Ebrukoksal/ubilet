@@ -1,148 +1,198 @@
-# Interactive Travel Planner (CLI)
+# Interactive Travel Planner (CLI) ✈️🚌🚆🏨🚗
 
-This document provides an overview of a command-line (CLI) travel planner application that manages plane, bus, train tickets, hotel reservations, and car rentals.
-
----
-
-## Table of Contents
-1. [Project Purpose and General Structure](#project-purpose-and-general-structure)
-2. [Project Directory and File Structure](#project-directory-and-file-structure)
-3. [User Login (auth.py)](#user-login-authpy)
-4. [Admin Panel (admin.py)](#admin-panel-adminpy)
-5. [Main Menu and Application Flow (mainpy)](#main-menu-and-application-flow-mainpy)
-6. [Plane Ticket Module (flight.py)](#plane-ticket-module-flightpy)
-7. [Bus Ticket Module (bus.py)](#bus-ticket-module-buspy)
-8. [Train Ticket Module (train.py)](#train-ticket-module-trainpy)
-9. [Hotel Reservation Module (hotel.py)](#hotel-reservation-module-hotelpy)
-10. [Car Rental Module (car.py)](#car-rental-module-carpy)
-11. [Payment Simulation (payment.py)](#payment-simulation-paymentpy)
-12. [Test Scenarios and Error Handling](#test-scenarios-and-error-handling)
-13. [Project Completion and Development](#project-completion-and-development)
-14. [Summary and Conclusion](#summary-and-conclusion)
+This document outlines the product details for an interactive travel planner application that runs entirely in the terminal (CLI). It covers the project purpose, directory structure, user management, modules, and other essential aspects.
 
 ---
 
-## Project Purpose and General Structure
+## 1. Project Purpose and General Structure
 
-**Project Purpose**  
-- Create an interactive travel planner that runs in the terminal (CLI).  
-- Provide flight, bus, train tickets, hotel reservations, and car rentals in a single system.
+### Project Purpose
+- **Objective:** Create an interactive travel planner application using a command-line interface.
+- **Services Offered:** Book plane, bus, train tickets, hotel reservations, and car rentals—all within one application.
 
-**General Scope**  
-- **CLI-Only Interface:** No frontend or GUI is used.  
-- **Mandatory Fields for Plane Tickets:** First name, last name, Turkish Republic ID number, and mobile phone number.  
-- **Placeholder Data (Version 1):** JSON files for all ticket purchase and rental sections (bus, train, hotel, car rental).  
-- **User Roles:** Includes a user login system and admin panel for role-based features.
+### General Scope
+- **CLI-Only Interface:** No graphical interface; all interactions are done via the command line.
+- **Mandatory Fields for Flights:** Requires first name, last name, Turkish Republic ID number, and mobile phone number.
+- **Version 1 Data:** Uses simple placeholder data or JSON files for ticket purchase and rental sections (bus, train, hotel, car rental).
+- **Role-Based Features:** Incorporates a user login system and an admin panel to manage functionalities based on user roles.
 
-**Tools to be Used**  
-- **Python 3.9+** for the core application.  
-- **Git** for version control.  
-- **VSCode/Cursor** for editing.
-
----
-
-## Project Directory and File Structure
-
-Recommended folder structure:
-
-
-- **auth.py:** Handles user login and role management.  
-- **admin.py:** Manages the admin panel for data editing.  
-- **flight.py, bus.py, train.py, hotel.py, car.py:** Modules for booking and operations.  
-- **payment.py:** Simulates the payment process.  
-- **data/ folder:** Stores placeholder JSON data.
+### Tools to be Used
+- **Programming Language:** Python 3.9+
+- **Version Control:** Git
+- **Editors:** VSCode and Cursor
 
 ---
 
-## User Login (auth.py)
+## 2. User Login (auth.py) 🔐
 
-- **User Registration & Role Management:** Users can have “admin” or “basic” roles.  
-- **Login Flow:** Prompts for username and password; verifies credentials from JSON storage.  
-- **Password Hashing:** Uses hashlib to store passwords securely.
+- **User Registration & Role Management:**  
+  - Define user registration with username, password, and role.
+  - Users can have either an “admin” or “basic” (normal user) role.
 
----
+- **Login Flow:**  
+  - On startup, prompt for username and password.
+  - If verification is successful, admin users are directed to the admin panel and basic users to the normal menu.
 
-## Admin Panel (admin.py)
-
-- **Admin Panel Menu:** Allows creation, removal, and updating of flights, buses, trains, hotels, and cars in JSON files.  
-- **File-Based Data Editing:** JSON files are opened and updated (e.g., flights.json).  
-- **Exiting:** Returns to the main menu or login screen upon completion.
-
----
-
-## Main Menu and Application Flow (main.py)
-
-- **Login Check:** Determines if a user is admin or basic.  
-- **Admin Flow:** Redirects to the admin panel for data editing.  
-- **User Flow:** Presents a normal menu with booking options.  
-- **Exit:** Typing “exit” or selecting option “6” closes the application.
+- **Data Storage:**  
+  - User data is stored in a JSON file (e.g., `users.json`).
+  - Passwords are stored securely using a hash function (e.g., `hashlib`).
 
 ---
 
-## Plane Ticket Module (flight.py)
+## 3. Admin Panel (admin.py) 🛠️
 
-- **Mandatory Fields:** Departure/arrival city, date, number of passengers, personal details.  
-- **Placeholder Data:** Filters and lists flights from flights.json or a similar structure.  
-- **Payment Confirmation:** Once a flight is chosen, proceeds to payment simulation.
+### Admin Panel Main Menu
+- **Options:**
+  1. Add/Remove/Update Flight
+  2. Add/Remove/Update Bus Service
+  3. Add/Remove/Update Train Service
+  4. Add/Remove/Update Hotel
+  5. Add/Remove/Update Car
+  6. Exit Admin Panel
 
----
+### Key Features
+- **Data Management:**  
+  - Open specific JSON files (e.g., `flights.json`) to add, remove, or update records based on admin input.
+  - Similar logic applies to bus, train, hotel, and car data.
 
-## Bus Ticket Module (bus.py)
-
-- **Collecting Info:** Departure, arrival, date, optional seat selection.  
-- **Placeholder Data:** Lists bus schedules from buses.json.  
-- **Payment Simulation:** Completes booking with a simulated payment.
-
----
-
-## Train Ticket Module (train.py)
-
-- **Train Schedules:** Stored in trains.json.  
-- **Search & Filter:** Matches departure and arrival stations, date, time.  
-- **Booking & Payment:** Finalizes the train ticket after a payment simulation.
+- **Saving & Exiting:**  
+  - After changes, update the JSON file using methods like `json.dump(...)`.
+  - Exiting returns the user to the main menu or login screen.
 
 ---
 
-## Hotel Reservation Module (hotel.py)
+## 4. Main Menu and Application Flow (main.py) 🚀
 
-- **Accommodation Details:** City, check-in/out, number of guests.  
-- **Filtering Hotels:** Based on city and date, from hotels.json.  
-- **Payment:** Confirms reservation with a simulated payment and issues a reservation code.
+- **User Login:**  
+  - Call the `login()` function to verify user credentials.
+  - Direct users to the admin panel or normal menu based on their role.
 
----
+- **Normal User Menu:**  
+  - Presents options for booking plane tickets, bus tickets, train tickets, hotel reservations, and car rentals.
+  - Users can exit the application by typing “exit” or selecting the corresponding option.
 
-## Car Rental Module (car.py)
-
-- **Rental Details:** Pickup/drop-off location and dates.  
-- **Car Selection:** Economy, mid, luxury options filtered from cars.json.  
-- **Payment & Confirmation:** Completes the car rental reservation if the payment simulation succeeds.
-
----
-
-## Payment Simulation (payment.py)
-
-- **Fake Payment Function:** Asks for card details (card number, expiry date, CVV).  
-- **Validation:** Checks minimum length of card number to determine success/failure.  
-- **Result:** Displays success or failure message and provides a reservation code upon success.
+- **Admin Role Menu:**  
+  - Provides an option to access the admin panel either automatically or via a menu selection.
+  - After admin tasks, the application returns to the login screen or terminates.
 
 ---
 
-## Test Scenarios and Error Handling
+## 5. Plane Ticket Module (flight.py) 🛫
 
-- **Invalid Inputs:** Shows warnings for unrecognized city names, schedules, or short card numbers.  
-- **Menu Loop:** Ensures repeated use of options, with proper handling of exit conditions.  
-- **Payment:** Displays “Payment failed” if validations fail, “successful” otherwise.
+- **Information Collection:**  
+  - Gather details such as departure city, arrival city, travel date (dd.mm.yyyy), number of passengers, first name, last name, Turkish Republic ID number, and mobile phone number.
 
----
+- **Placeholder Data:**  
+  - Use data from `flights.json` or a Python list to display available flight options.
 
-## Project Completion and Development
-
-- **README.md File:** Summarizes installation steps and usage.  
-- **Version Control:** Recommends using Git with frequent commits.  
-- **Future Enhancements:** May include a switch to databases, API-based data, multilingual support, etc.
+- **Payment Simulation:**  
+  - After a schedule is selected, proceed with a payment simulation that confirms the ticket booking.
 
 ---
 
-## Summary and Conclusion
+## 6. Bus Ticket Module (bus.py) 🚌
 
-By focusing on CLI-based operations, mandatory user details for key ticket types, JSON-based data storage, and simple payment simulations, this project aims to deliver a complete travel planning experience in a terminal environment. It can be further expanded with database integration, real-time data, or additional functionalities for a more robust and modern travel booking system.
+- **Details Collected:**  
+  - Information such as departure, arrival, date, and optional seat selection.
+
+- **Schedule Listing:**  
+  - Use placeholder data from `buses.json` to show available bus schedules.
+
+- **Payment Flow:**  
+  - Simulate a payment process to complete the booking if the user proceeds.
+
+---
+
+## 7. Train Ticket Module (train.py) 🚆
+
+- **Data Source:**  
+  - Train schedules are stored in `trains.json` or similar data structures.
+
+- **User Input:**  
+  - Prompt the user for departure and arrival stations, date, and optionally, schedule time or wagon/seat options.
+
+- **Filtering & Booking:**  
+  - Display matching schedules and, upon selection, initiate a payment simulation to confirm the booking.
+
+---
+
+## 8. Hotel Reservation Module (hotel.py) 🏨
+
+- **Information Collection:**  
+  - Request details such as city, check-in/check-out dates, and number of guests.
+
+- **Hotel Listings:**  
+  - Filter hotels from `hotels.json` based on city and dates.
+
+- **Payment Simulation:**  
+  - Once a hotel is selected, run a simulated payment process and display a reservation code if successful.
+
+---
+
+## 9. Car Rental Module (car.py) 🚗
+
+- **Rental Details:**  
+  - Collect information on pickup and drop-off locations/dates.
+
+- **Car Options:**  
+  - Filter available cars (economy, mid, luxury) using data from `cars.json`.
+
+- **Additional Checks:**  
+  - Optionally enforce restrictions based on driver’s license issue year, age, etc.
+
+- **Booking Completion:**  
+  - Finalize the rental reservation through a payment simulation.
+
+---
+
+## 10. Payment Simulation (payment.py) 💳
+
+- **Functionality:**  
+  - Simulate a payment by asking for card number, expiry date, and CVV.
+  
+- **Validation:**  
+  - Basic checks, such as verifying the card number’s length, are performed.
+  
+- **Outcome:**  
+  - Display a “Payment failed” message if validations do not pass.
+  - If successful, show a confirmation message along with a reservation/ticket code.
+
+---
+
+## 11. Test Scenarios and Error Handling 🔍
+
+- **Input Validation:**  
+  - The application should display clear warnings for incorrect inputs (e.g., wrong city names, invalid dates, etc.).
+  
+- **Menu Navigation:**  
+  - Ensure that users can repeatedly navigate through the menus and exit gracefully.
+
+- **Payment Validation:**  
+  - The system must properly handle cases of invalid card details by showing a “Payment failed” message when necessary.
+
+---
+
+## 12. Project Completion and Future Developments 🚧
+
+- **Documentation:**  
+  - A comprehensive README.md file is provided, summarizing installation and usage instructions.
+  
+- **Version Control:**  
+  - Use Git to track changes and manage versions effectively.
+  
+- **Planned Enhancements:**  
+  - Transition from JSON files to databases (SQLite, PostgreSQL, etc.).
+  - Integrate real-time data via external APIs.
+  - Add multilingual support and an advanced user registration system.
+  - Enhance security and improve payment validation.
+
+---
+
+## 13. Summary and Conclusion 🎉
+
+This CLI-based travel planner aims to provide a seamless booking experience for plane, bus, train tickets, hotel reservations, and car rentals—all from the terminal.  
+- **User Roles:** Admins manage data through an admin panel, while basic users enjoy a simplified booking process.
+- **Data Handling:** Uses JSON-based storage with placeholder data, setting the stage for future upgrades.
+- **Payment Simulation:** A simple payment flow confirms bookings and enhances reliability.
+
+Happy coding and safe travels! 🌍✈️🚌🚆🏨🚗
