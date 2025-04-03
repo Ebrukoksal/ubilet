@@ -1,1 +1,12 @@
-[{"username": "a", "hashed_password": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506", "role": "admin"}, {"username": "b", "hashed_password": "3b64db95cb55c763391c707108489ae18b4112d783300de38e033b4c98c3deaf", "role": "user"}, {"username": "c", "hashed_password": "355b1bbfc96725cdce8f4a2708fda310a80e6d13315aec4e5eed2a75fe8032ce", "role": "admin"}]
+{
+    "b038bc6782bd74958db857505aba87655771830e917e4546a4fdfc2068a2e4c7": {
+        "username": "a",
+        "hashed_password": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506",
+        "role": "admin"
+    },
+    "728e421644c7a0278a3f0401e7687f88bb82b456719c3b494d9715b759202514": {
+        "username": "ebru",
+        "hashed_password": "299c73080baeea821acee00d206d22c4350d54f91c64a5f92dfc837b5da2a447",
+        "role": "user"
+    }
+}

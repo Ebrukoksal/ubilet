@@ -1,0 +1,20 @@
+{
+  "63d0d42628add99fcd8844dff1490dbdc3f34c0d6bfd091667e87915feb26798": {
+    "voyage_number": "PII140520251345",
+    "airline": "pegasus",
+    "departure": "izmir",
+    "arrival": "istanbul",
+    "date": "14/05/2025",
+    "time": "13:45",
+    "price": 1
+  },
+  "2bd341231501399ddc118b617bf4deaa1f400982df7982d772bc8d72aac563cc": {
+    "voyage_number": "TAB200320251600",
+    "airline": "thy",
+    "departure": "adana",
+    "arrival": "bursa",
+    "date": "20/03/2025",
+    "time": "16:00",
+    "price": 100
+  }
+}
