@@ -1,34 +1,33 @@
-from modules.bus import bus_arrangement
-from modules.car import car_arrangement
-from modules.flight import flight_arrangement
-from modules.hotel import hotel_arrangement
-from modules.train import train_arrangement
+from modules.user_bus import user_bus_arrangement
+from modules.user_car import user_car_arrangement
+from modules.user_flight import user_flight_arrangement
+from modules.user_hotel import user_hotel_arrangement
+from modules.user_train import user_train_arrangement
 
 
-def user_loggedin(username):
-    print(f"Welcome to Ubilet! How can I assist you {username}")
+def user_loggedin(user):
+    print(f"Welcome to Ubilet! How can I assist you {user}")
     exited = False
     while not exited:
-        print("1 - Uçak seferleri \n"
-            "2 - Otobüs seferleri \n"
-            "3 - Tren seferleri \n"
-            "4 - Otel seferleri \n"
-            "5 - Araç seferleri \n"
-            "6 - Çıkış yap \n")
+        print("1 - Flights \n"
+            "2 - Buses \n"
+            "3 - Trains \n"
+            "4 - Hotels \n"
+            "5 - Cars \n"
+            "6 - Logout \n")
         selected_operation = input("Operation number : ")
         if selected_operation =="1":
-            flight_arrangement()
+            user_flight_arrangement(user)
         elif selected_operation == "2":
-            bus_arrangement()
+            user_bus_arrangement()
         elif selected_operation == "3":
-            train_arrangement()
+            user_train_arrangement()
         elif selected_operation == "4":
-            hotel_arrangement()
+            user_hotel_arrangement()
         elif selected_operation == "5":
-            car_arrangement()
+            user_car_arrangement()
         elif selected_operation == "6":
             exited = True
-            print("by")
         else:
             print("Invalid input! Please select an operation.")
     return exited

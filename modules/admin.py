@@ -11,13 +11,13 @@ def admin(username):
     exited = False
     while not exited:
         print("Select the operation you want to proceed by entering the operation number \n")
-        print("1 - Uçuş Ekle/Çıkar/Güncelle \n"
-            "2 - Otobüs Seferi Ekle/Çıkar/Güncelle \n"
-            "3 - Tren Seferi Ekle/Çıkar/Güncelle \n"
-            "4 - Otel Ekle/Çıkar/Güncelle \n"
-            "5 - Araç Ekle/Çıkar/Güncelle \n"
-            "6 - Admin Loglarını Görüntüle \n"
-            "7 - Çıkış Admin Paneli \n")
+        print("1 - Manage Flights (Add/Remove/Update) \n"
+            "2 - Manage Buses (Add/Remove/Update) \n"
+            "3 - Manage Trains (Add/Remove/Update) \n"
+            "4 - Manage Hotels (Add/Remove/Update) \n"
+            "5 - Manage Cars (Add/Remove/Update) \n"
+            "6 - Display Admin Logs \n"
+            "7 - Logout Admin Panel \n")
         selected_operation = input("Operation number : ")
         if selected_operation =="1":
             flight_arrangement(username)

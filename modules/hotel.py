@@ -7,7 +7,7 @@ from modules.logger import log_admin_action
 def hotel_arrangement(admin_username=None):
     choice = False
     while not choice:
-        hotel_arrangement = input("Press 1 to add a hotel service \n Press 2 to remove a hotel service \n Press 3 to update hotel service informations \n Press 4 to go back previous screen \n")
+        hotel_arrangement = input(" Press 1 to add a hotel service \n Press 2 to remove a hotel service \n Press 3 to update hotel service informations \n Press 4 to display hotels \n Press 5 to go back previous screen \n")
         if hotel_arrangement == "1":
             add_hotel(admin_username)
         elif hotel_arrangement == "2":
@@ -15,12 +15,14 @@ def hotel_arrangement(admin_username=None):
         elif hotel_arrangement == "3":
             update_hotel(admin_username)
         elif hotel_arrangement == "4":
+            display_hotels_table()
+        elif hotel_arrangement == "5":
             choice = True
         else:
             print("Invalid input")
 
-def get_hotel_id(hotel_name, max_guests, rental_date, leaving_date):
-    hotel_id = hotel_name[0].upper() + max_guests
+def get_hotel_id(hotel_name, rental_date, leaving_date):
+    hotel_id = hotel_name[0].upper()
     hotel_id += rental_date.replace("/", "").upper()
     hotel_id += leaving_date.replace("/", "").upper()
     
@@ -31,19 +33,20 @@ def add_hotel(admin_username=None):
         hotels = json.load(f)
 
     hotel_name = get_valid_input("Hotel Name: ").lower()
-    max_guests = get_valid_input("Max Guests: ")
+    rooms_available = get_valid_input("Rooms Available: ")
     rental_date = get_valid_input("Rental Date: ")
     leaving_date = get_valid_input("Leaving Date: ")
     hotel_price = get_valid_input("Hotel Price: ", is_price=True)
 
-    hashed_hotel_id = get_hash(hotel_name, max_guests, rental_date, leaving_date, hotel_price)
-    hotel_id = get_hotel_id(hotel_name, max_guests, rental_date, leaving_date)
+    hashed_hotel_id = get_hash(hotel_name, rental_date, leaving_date, hotel_price)
+    hotel_id = get_hotel_id(hotel_name, rental_date, leaving_date)
 
 
     hotels[hashed_hotel_id] = {
         "hotel_id": hotel_id,
         "hotel_name": hotel_name,
-        "max_guests": max_guests,
+        "rooms_available": rooms_available
+,
         "rental_date": rental_date,
         "leaving_date": leaving_date,
         "hotel_price": int(hotel_price)
@@ -59,13 +62,14 @@ def add_hotel(admin_username=None):
             details={
                 "hotel_id": hotel_id,
                 "hotel_name": hotel_name,
-                "max_guests": max_guests,
+                "rooms_available": rooms_available
+        ,
                 "rental_date": rental_date,
                 "leaving_date": leaving_date,
                 "hotel_price": int(hotel_price)
             }
         )
-    print("Değişiklikler kaydedildi.")
+    print("Changes saved!")
 
 def display_hotels_table():
     """
@@ -85,14 +89,14 @@ def display_hotels_table():
     # Table header
     print("\nExisting Hotels:")
     print("-" * 100)
-    print(f"{'Hotel ID':<15} {'Hotel Name':<10} {'Max Guests':<15} {'Rental Date':<15} {'Leaving Date':<15} {'Hotel Price':<10}")
+    print(f"{'Hotel ID':<15} {'Hotel Name':<10} {'Rooms Available':<15} {'Rental Date':<15} {'Leaving Date':<15} {'Hotel Price':<10}")
     print("-" * 100)
 
     # Table rows
     for hotel in hotels.values():
         print(f"{hotel['hotel_id']:<15} "
               f"{hotel['hotel_name']:<10} "
-              f"{hotel['max_guests']:<15} "
+              f"{hotel['rooms_available']:<15} "
               f"{hotel['rental_date']:<15} "
               f"{hotel['leaving_date']:<15} "
               f"{hotel['hotel_price']:<10}")
@@ -143,7 +147,7 @@ def update_hotel(admin_username=None):
 
     if key_to_updating_hotel in hotels:
         old_hotel_details = hotels[key_to_updating_hotel].copy()
-        key_to_update = input("Enter the detail you want to change (hotel_name/max_guests/rental_date/leaving_date/hotel_price): ").lower()
+        key_to_update = input("Enter the detail you want to change (hotel_name/rooms_available/rental_date/leaving_date/hotel_price): ").lower()
         new_value = input(f"Enter the new {key_to_update}: ")
         
         if key_to_update == "hotel_price":
@@ -153,7 +157,7 @@ def update_hotel(admin_username=None):
 
         updated_hotel_id = get_hotel_id(
             hotels[key_to_updating_hotel]["hotel_name"],
-            hotels[key_to_updating_hotel]["max_guests"],
+            hotels[key_to_updating_hotel]["rooms_available"],
             hotels[key_to_updating_hotel]["rental_date"],
             hotels[key_to_updating_hotel]["leaving_date"]
         )

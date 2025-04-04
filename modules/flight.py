@@ -8,7 +8,7 @@ from modules.logger import log_admin_action
 def flight_arrangement(admin_username=None):
     choice = False
     while not choice:
-        flight_arrangement = input("Press 1 to add a flight \n Press 2 to remove a flight \n Press 3 to update flight informations \n Press 4 to go back previous screen \n")
+        flight_arrangement = input(" Press 1 to add a flight \n Press 2 to remove a flight \n Press 3 to update flight informations \n Press 4 to display flights \n Press 5 to go back previous screen \n")
         if flight_arrangement == "1":
             add_flight(admin_username)
         elif flight_arrangement == "2":
@@ -16,6 +16,8 @@ def flight_arrangement(admin_username=None):
         elif flight_arrangement == "3":
             update_flight(admin_username)
         elif flight_arrangement == "4":
+            display_flights_table()
+        elif flight_arrangement == "5":
             choice = True
         else:
             print("Invalid input")
@@ -37,8 +39,8 @@ def add_flight(admin_username=None):
     arrival = get_valid_input("Arrival: ").lower()
     date = get_valid_input("Date: ")
     time_ = get_valid_input("Time: ")
+    seat_available = get_valid_input("Seat Available: ", is_price=True)
     price = get_valid_input("Price: ", is_price=True)
-
     hashed_flight_id = get_hash(airline, departure, arrival, date, time_, price)
     voyage_number = get_flight_voyage_number(airline, departure, arrival, date, time_)
 
@@ -49,6 +51,7 @@ def add_flight(admin_username=None):
         "arrival": arrival,
         "date": date,
         "time": time_,
+        "seat_available": int(seat_available),
         "price": int(price)
     }
     with open("data/flights.json", "w", encoding="utf-8") as f:
@@ -66,10 +69,11 @@ def add_flight(admin_username=None):
                 "arrival": arrival,
                 "date": date,
                 "time": time_,
+                "seat_available": int(seat_available), 
                 "price": int(price)
             }
         )
-    print("Değişiklikler kaydedildi.")
+    print("Changes saved!")
 
 def display_flights_table():
     """
@@ -89,7 +93,7 @@ def display_flights_table():
     # Table header
     print("\nExisting Flights:")
     print("-" * 100)
-    print(f"{'Voyage Number':<15} {'Airline':<10} {'From':<15} {'To':<15} {'Date':<12} {'Time':<8} {'Price':<10}")
+    print(f"{'Voyage Number':<15} {'Airline':<10} {'From':<15} {'To':<15} {'Date':<12} {'Time':<8} {'Seat Available':<10} {'Price':<10}")
     print("-" * 100)
 
     # Table rows
@@ -100,6 +104,7 @@ def display_flights_table():
               f"{flight['arrival']:<15} "
               f"{flight['date']:<12} "
               f"{flight['time']:<8} "
+              f"{flight['seat_available']:<10} "
               f"{flight['price']:<10}")
     print("-" * 100)
     print()
@@ -148,11 +153,12 @@ def update_flight(admin_username=None):
 
     if key_to_updating_flight in flights:
         old_flight_details = flights[key_to_updating_flight].copy()
-        key_to_update = input("Enter the detail you want to change (airline/departure/arrival/date/time/price): ").lower()
+        key_to_update = input("Enter the detail you want to change (airline/departure/arrival/date/time/seat_available/price): ").lower()
         new_value = input(f"Enter the new {key_to_update}: ")
         
-        if key_to_update == "price":
+        if key_to_update == "price" or key_to_update == "seat_available":
             flights[key_to_updating_flight][key_to_update] = int(new_value)
+            flights[key_to_updating_flight]["seat_available"] = int(new_value)
         else:
             flights[key_to_updating_flight][key_to_update] = new_value.lower()
 

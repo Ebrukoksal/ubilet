@@ -6,7 +6,8 @@
     "arrival": "istanbul",
     "date": "14/05/2025",
     "time": "13:45",
-    "price": 1
+    "price": 1,
+    "seat_available": 47
   },
   "2bd341231501399ddc118b617bf4deaa1f400982df7982d772bc8d72aac563cc": {
     "voyage_number": "TAB200320251600",
@@ -16,5 +17,14 @@
     "date": "20/03/2025",
     "time": "16:00",
     "price": 100
+  },
+  "72e7160b091a4d5d91f28228fccd27b15936f15d4487e51b65d3a03a7d9fc21b": {
+    "voyage_number": "ABC1111112222",
+    "airline": "a",
+    "departure": "b",
+    "arrival": "c",
+    "date": "1/1/1111",
+    "time": "22:22",
+    "price": 1234
   }
 }

@@ -1,0 +1,11 @@
+{
+  "4785478022924564cab025700fa271fcb83d7b1a307b3ba6de2b23ea09daeddb": {
+    "voyage_number": "TMI300720251015",
+    "company": "tcdd",
+    "departure": "manisa",
+    "arrival": "izmir",
+    "date": "30/07/2025",
+    "time": "10:15",
+    "price": 250
+  }
+}

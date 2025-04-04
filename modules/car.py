@@ -7,7 +7,7 @@ from modules.logger import log_admin_action
 def car_arrangement(admin_username=None):
     choice = False
     while not choice:
-        car_arrangement = input("Press 1 to add a car service \n Press 2 to remove a car service \n Press 3 to update car service informations \n Press 4 to go back previous screen \n")
+        car_arrangement = input(" Press 1 to add a car service \n Press 2 to remove a car service \n Press 3 to update car service informations \n Press 4 to display cars \n Press 5 to go back previous screen \n")
         if car_arrangement == "1":
             add_car(admin_username)
         elif car_arrangement == "2":
@@ -15,6 +15,8 @@ def car_arrangement(admin_username=None):
         elif car_arrangement == "3":
             update_car(admin_username)
         elif car_arrangement == "4":
+            display_cars_table()
+        elif car_arrangement == "5":
             choice = True
         else:
             print("Invalid input")
@@ -34,6 +36,7 @@ def add_car(admin_username=None):
     brand = get_valid_input("Brand: ").lower()
     rental_date = get_valid_input("Rental Date: ")
     return_date = get_valid_input("Return Date: ")
+    cars_available = get_valid_input("Cars Available: ", is_price=True)
     price = get_valid_input("Price: ", is_price=True)
 
     hashed_car_id = get_hash(brand, rental_date, return_date, price)
@@ -45,6 +48,7 @@ def add_car(admin_username=None):
         "brand": brand,
         "rental_date": rental_date,
         "return_date": return_date,
+        "cars_available": int(cars_available),
         "price": int(price)
     }
     with open("data/cars.json", "w", encoding="utf-8") as f:
@@ -60,10 +64,11 @@ def add_car(admin_username=None):
                 "brand": brand,
                 "rental_date": rental_date,
                 "return_date": return_date,
+                "cars_available": int(cars_available),
                 "price": int(price)
             }
         )
-    print("Değişiklikler kaydedildi.")
+    print("Changes saved!")
 
 def display_cars_table():
     """
@@ -83,7 +88,7 @@ def display_cars_table():
     # Table header
     print("\nExisting Cars:")
     print("-" * 100)
-    print(f"{'Voyage Number':<15} {'Brand':<10} {'Rental Date':<15} {'Return Date':<15} {'Price':<10}")
+    print(f"{'Voyage Number':<15} {'Brand':<10} {'Rental Date':<15} {'Return Date':<15} {'Cars Available':<10} {'Price':<10}")
     print("-" * 100)
 
     # Table rows
@@ -92,6 +97,7 @@ def display_cars_table():
               f"{car['brand']:<10} "
               f"{car['rental_date']:<15} "
               f"{car['return_date']:<15} "
+              f"{car['cars_available']:<10} "
               f"{car['price']:<10}")
     print("-" * 100)
     print()
@@ -141,11 +147,12 @@ def update_car(admin_username=None):
 
     if key_to_updating_car in cars:
         old_car_details = cars[key_to_updating_car].copy()
-        key_to_update = input("Enter the detail you want to change (brand/rental_date/return_date/price): ").lower()
+        key_to_update = input("Enter the detail you want to change (brand/rental_date/return_date/cars_available/price): ").lower()
         new_value = input(f"Enter the new {key_to_update}: ")
         
-        if key_to_update == "price":
+        if key_to_update == "price" or key_to_update == "cars_available":
             cars[key_to_updating_car][key_to_update] = int(new_value)
+            cars[key_to_updating_car]["cars_available"] = int(new_value)
         else:
             cars[key_to_updating_car][key_to_update] = new_value.lower()
 

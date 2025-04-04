@@ -1,0 +1,35 @@
+{
+  "PAY_20250404151508_FLIGHT_PII140520251345_ebru": {
+    "booking_id": "FLIGHT_PII140520251345_ebru",
+    "service_type": "flight",
+    "amount": 1,
+    "payment_date": "2025-04-04 15:15:08",
+    "customer_name": "ebru",
+    "customer_surname": "koksal",
+    "id_number": "123456",
+    "card_number": "2345",
+    "exp_date": "11/12/2039",
+    "status": "completed"
+  },
+  "PAY_20250404151912_FLIGHT_PII140520251345_ebru": {
+    "booking_id": "FLIGHT_PII140520251345_ebru",
+    "service_type": "flight",
+    "amount": 1,
+    "payment_date": "2025-04-04 15:19:12",
+    "customer_name": "ebru",
+    "customer_surname": "koksal",
+    "id_number": "48904812903821",
+    "card_number": "3981",
+    "exp_date": "13/12/2078",
+    "status": "completed",
+    "booking_details": {
+      "type": "flight",
+      "user": "ebru",
+      "voyage_number": "PII140520251345",
+      "departure": "izmir",
+      "arrival": "istanbul",
+      "date": "14/05/2025",
+      "time": "13:45"
+    }
+  }
+}

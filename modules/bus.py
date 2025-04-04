@@ -7,7 +7,7 @@ from modules.logger import log_admin_action
 def bus_arrangement(admin_username=None):
     choice = False
     while not choice:
-        bus_arrangement = input("Press 1 to add a bus service \n Press 2 to remove a bus service \n Press 3 to update bus service informations \n Press 4 to go back previous screen \n")
+        bus_arrangement = input(" Press 1 to add a bus service \n Press 2 to remove a bus service \n Press 3 to update bus service informations \n Press 4 to display buses \n Press 5 to go back previous screen \n")
         if bus_arrangement == "1":
             add_bus(admin_username)
         elif bus_arrangement == "2":
@@ -15,6 +15,8 @@ def bus_arrangement(admin_username=None):
         elif bus_arrangement == "3":
             update_bus(admin_username)
         elif bus_arrangement == "4":
+            display_buses_table()
+        elif bus_arrangement == "5":
             choice = True
         else:
             print("Invalid input")
@@ -36,6 +38,7 @@ def add_bus(admin_username=None):
     arrival = get_valid_input("Arrival: ").lower()
     date = get_valid_input("Date: ")
     time = get_valid_input("Time: ")
+    seat_available = get_valid_input("Seat Available: ", is_price=True)
     price = get_valid_input("Price: ", is_price=True)
 
     hashed_bus_id = get_hash(company, departure, arrival, date, time, price)
@@ -49,6 +52,7 @@ def add_bus(admin_username=None):
         "arrival": arrival,
         "date": date,
         "time": time,
+        "seat_available": int(seat_available),
         "price": int(price)
     }
     with open("data/buses.json", "w", encoding="utf-8") as f:
@@ -66,10 +70,11 @@ def add_bus(admin_username=None):
                 "arrival": arrival,
                 "date": date,
                 "time": time,
+                "seat_available": int(seat_available),
                 "price": int(price)
             }
         )
-    print("Değişiklikler kaydedildi.")
+    print("Changes saved!")
     
 def display_buses_table():
     """
@@ -89,7 +94,7 @@ def display_buses_table():
     # Table header
     print("\nExisting Buses:")
     print("-" * 100)
-    print(f"{'Voyage Number':<15} {'Company':<10} {'From':<15} {'To':<15} {'Date':<12} {'Time':<8} {'Price':<10}")
+    print(f"{'Voyage Number':<15} {'Company':<10} {'From':<15} {'To':<15} {'Date':<12} {'Time':<8} {'Seat Available':<10} {'Price':<10}")
     print("-" * 100)
 
     # Table rows
@@ -100,6 +105,7 @@ def display_buses_table():
               f"{bus['arrival']:<15} "
               f"{bus['date']:<12} "
               f"{bus['time']:<8} "
+              f"{bus['seat_available']:<10} "
               f"{bus['price']:<10}")
     print("-" * 100)
     print()
@@ -150,11 +156,12 @@ def update_bus(admin_username=None):
 
     if key_to_updating_bus in buses:
         old_bus_details = buses[key_to_updating_bus].copy()
-        key_to_update = input("Enter the detail you want to change (company/departure/arrival/date/time/price): ").lower()
+        key_to_update = input("Enter the detail you want to change (company/departure/arrival/date/time/seat_available/price): ").lower()
         new_value = input(f"Enter the new {key_to_update}: ")
         
-        if key_to_update == "price":
+        if key_to_update == "price" or key_to_update == "seat_available":
             buses[key_to_updating_bus][key_to_update] = int(new_value)
+            buses[key_to_updating_bus]["seat_available"] = int(new_value)
         else:
             buses[key_to_updating_bus][key_to_update] = new_value.lower()
 
