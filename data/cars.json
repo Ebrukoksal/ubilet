@@ -2,8 +2,8 @@
   "bddd32c04ccbdd8457d83dfa5a6cdec3ebd9f927020d341f1004b676874ecab4": {
     "car_id": "T121212202520122025",
     "brand": "toyota",
-    "rental_date": "12/12/2025",
-    "return_date": "20/12/2025",
-    "price": 1234
+    "price": 1234,
+    "cars_available": 2,
+    "car_plate": "T12121"
   }
 }

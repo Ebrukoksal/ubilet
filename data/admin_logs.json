@@ -378,5 +378,142 @@
       },
       "changed_field": "price"
     }
+  },
+  "2025-04-09 12:00:13": {
+    "timestamp": "2025-04-09 12:00:13",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "OADANA",
+      "hotel_name": "otel 1",
+      "city": "adana",
+      "rooms_available": 20,
+      "price": 200
+    }
+  },
+  "2025-04-09 12:01:29": {
+    "timestamp": "2025-04-09 12:01:29",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "OISTANBUL",
+      "hotel_name": "otel 2",
+      "city": "istanbul",
+      "rooms_available": 30,
+      "price": 300
+    }
+  },
+  "2025-04-09 12:05:38": {
+    "timestamp": "2025-04-09 12:05:38",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "OTEAD189",
+      "hotel_name": "otel 1",
+      "city": "adana",
+      "rooms_available": 20,
+      "price": 200
+    }
+  },
+  "2025-04-09 12:05:53": {
+    "timestamp": "2025-04-09 12:05:53",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "OTEAD437",
+      "hotel_name": "otel 2",
+      "city": "adana",
+      "rooms_available": 30,
+      "price": 300
+    }
+  },
+  "2025-04-09 12:06:15": {
+    "timestamp": "2025-04-09 12:06:15",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "BLAIS835",
+      "hotel_name": "blabla",
+      "city": "istanbul",
+      "rooms_available": 40,
+      "price": 400
+    }
+  },
+  "2025-04-09 12:06:47": {
+    "timestamp": "2025-04-09 12:06:47",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "hotel",
+    "details": {
+      "old_details": {
+        "hotel_id": "BLAIS835",
+        "hotel_name": "blabla",
+        "city": "istanbul",
+        "rooms_available": 40,
+        "price": 400
+      },
+      "new_details": {
+        "hotel_id": "GANIS288",
+        "hotel_name": "gand istanbul",
+        "city": "istanbul",
+        "rooms_available": 40,
+        "price": 400
+      },
+      "changed_field": "hotel_name"
+    }
+  },
+  "2025-04-09 12:07:09": {
+    "timestamp": "2025-04-09 12:07:09",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "hotel",
+    "details": {
+      "old_details": {
+        "hotel_id": "GANIS288",
+        "hotel_name": "gand istanbul",
+        "city": "istanbul",
+        "rooms_available": 40,
+        "price": 400
+      },
+      "new_details": {
+        "hotel_id": "GRAIS273",
+        "hotel_name": "grand istanbul",
+        "city": "istanbul",
+        "rooms_available": 40,
+        "price": 400
+      },
+      "changed_field": "hotel_name"
+    }
+  },
+  "2025-04-09 12:07:20": {
+    "timestamp": "2025-04-09 12:07:20",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "AA152",
+      "hotel_name": "a",
+      "city": "a",
+      "rooms_available": 1,
+      "price": 1
+    }
+  },
+  "2025-04-09 12:07:29": {
+    "timestamp": "2025-04-09 12:07:29",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "AA152",
+      "hotel_name": "a",
+      "city": "a",
+      "rooms_available": 1,
+      "price": 1
+    }
   }
 }

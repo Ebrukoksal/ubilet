@@ -3,6 +3,7 @@ from utils import get_hash
 from utils import get_hash_with_kwargs
 from utils import get_valid_input
 from modules.logger import log_admin_action
+import random
 
 def hotel_arrangement(admin_username=None):
     choice = False
@@ -21,10 +22,15 @@ def hotel_arrangement(admin_username=None):
         else:
             print("Invalid input")
 
-def get_hotel_id(hotel_name, rental_date, leaving_date):
-    hotel_id = hotel_name[0].upper()
-    hotel_id += rental_date.replace("/", "").upper()
-    hotel_id += leaving_date.replace("/", "").upper()
+def get_hotel_id(hotel_name, city):
+    # Use the first three letters of the hotel name
+    hotel_id = hotel_name[:3].upper()
+    
+    # Add the first two letters of the city
+    hotel_id += city[:2].upper()
+    
+    # Add a random number to make it unique
+    hotel_id += str(random.randint(100, 999))
     
     return hotel_id
 
@@ -33,23 +39,21 @@ def add_hotel(admin_username=None):
         hotels = json.load(f)
 
     hotel_name = get_valid_input("Hotel Name: ").lower()
-    rooms_available = get_valid_input("Rooms Available: ")
-    rental_date = get_valid_input("Rental Date: ")
-    leaving_date = get_valid_input("Leaving Date: ")
-    hotel_price = get_valid_input("Hotel Price: ", is_price=True)
+    city = get_valid_input("City: ").lower()
+    rooms_available = get_valid_input("Rooms Available: ", is_price=True)
+    adult_price = get_valid_input("Price per adult per day: ", is_price=True)
+    child_price = get_valid_input("Price per child per day: ", is_price=True)
 
-    hashed_hotel_id = get_hash(hotel_name, rental_date, leaving_date, hotel_price)
-    hotel_id = get_hotel_id(hotel_name, rental_date, leaving_date)
-
+    hashed_hotel_id = get_hash(hotel_name, adult_price)
+    hotel_id = get_hotel_id(hotel_name, city)
 
     hotels[hashed_hotel_id] = {
         "hotel_id": hotel_id,
         "hotel_name": hotel_name,
-        "rooms_available": rooms_available
-,
-        "rental_date": rental_date,
-        "leaving_date": leaving_date,
-        "hotel_price": int(hotel_price)
+        "city": city,
+        "rooms_available": int(rooms_available),
+        "adult_price": int(adult_price),
+        "child_price": int(child_price)
     }
     with open("data/hotels.json", "w", encoding="utf-8") as f:
         json.dump(hotels, f, ensure_ascii=False, indent=2)
@@ -62,11 +66,10 @@ def add_hotel(admin_username=None):
             details={
                 "hotel_id": hotel_id,
                 "hotel_name": hotel_name,
-                "rooms_available": rooms_available
-        ,
-                "rental_date": rental_date,
-                "leaving_date": leaving_date,
-                "hotel_price": int(hotel_price)
+                "city": city,
+                "rooms_available": int(rooms_available),
+                "adult_price": int(adult_price),
+                "child_price": int(child_price)
             }
         )
     print("Changes saved!")
@@ -88,19 +91,19 @@ def display_hotels_table():
 
     # Table header
     print("\nExisting Hotels:")
-    print("-" * 100)
-    print(f"{'Hotel ID':<15} {'Hotel Name':<10} {'Rooms Available':<15} {'Rental Date':<15} {'Leaving Date':<15} {'Hotel Price':<10}")
-    print("-" * 100)
+    print("-" * 120)
+    print(f"{'Hotel ID':<15} {'Hotel Name':<15} {'City':<15} {'Rooms Available':<15} {'Adult Price/Day':<15} {'Child Price/Day':<15}")
+    print("-" * 120)
 
     # Table rows
     for hotel in hotels.values():
         print(f"{hotel['hotel_id']:<15} "
-              f"{hotel['hotel_name']:<10} "
+              f"{hotel['hotel_name']:<15} "
+              f"{hotel['city']:<15} "
               f"{hotel['rooms_available']:<15} "
-              f"{hotel['rental_date']:<15} "
-              f"{hotel['leaving_date']:<15} "
-              f"{hotel['hotel_price']:<10}")
-    print("-" * 100)
+              f"{hotel['adult_price']:<15} "
+              f"{hotel['child_price']:<15}")
+    print("-" * 120)
     print()
 
 def remove_hotel(admin_username=None):
@@ -147,19 +150,18 @@ def update_hotel(admin_username=None):
 
     if key_to_updating_hotel in hotels:
         old_hotel_details = hotels[key_to_updating_hotel].copy()
-        key_to_update = input("Enter the detail you want to change (hotel_name/rooms_available/rental_date/leaving_date/hotel_price): ").lower()
-        new_value = input(f"Enter the new {key_to_update}: ")
+        key_to_update = input("Enter the detail you want to change (hotel_name/city/rooms_available/adult_price/child_price): ").lower()
         
-        if key_to_update == "hotel_price":
+        if key_to_update == "adult_price" or key_to_update == "child_price" or key_to_update == "rooms_available":
+            new_value = input(f"Enter the new {key_to_update}: ")
             hotels[key_to_updating_hotel][key_to_update] = int(new_value)
         else:
+            new_value = input(f"Enter the new {key_to_update}: ")
             hotels[key_to_updating_hotel][key_to_update] = new_value.lower()
 
         updated_hotel_id = get_hotel_id(
             hotels[key_to_updating_hotel]["hotel_name"],
-            hotels[key_to_updating_hotel]["rooms_available"],
-            hotels[key_to_updating_hotel]["rental_date"],
-            hotels[key_to_updating_hotel]["leaving_date"]
+            hotels[key_to_updating_hotel]["city"]
         )
 
         new_key_updated_hotel = get_hash_with_kwargs(**hotels[key_to_updating_hotel])

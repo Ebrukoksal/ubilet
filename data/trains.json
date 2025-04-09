@@ -6,6 +6,7 @@
     "arrival": "izmir",
     "date": "30/07/2025",
     "time": "10:15",
-    "price": 250
+    "price": 250,
+    "seat_available": 49
   }
 }

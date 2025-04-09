@@ -1,1 +1,26 @@
-{}
+{
+  "9689f83481438185fca267efda74f22c267f27d045f7c3eb3a30ba73fc18bab5": {
+    "hotel_id": "OTEAD189",
+    "hotel_name": "otel 1",
+    "city": "adana",
+    "rooms_available": 20,
+    "adult_price": 200,
+    "child_price": 100
+  },
+  "4dba90dc8516cc9cab64622e1964fa3ea179e7d5e6f1c596be2c40316fa9e04e": {
+    "hotel_id": "OTEAD437",
+    "hotel_name": "otel 2",
+    "city": "adana",
+    "rooms_available": 28,
+    "adult_price": 300,
+    "child_price": 150
+  },
+  "104c51c8fd0fca2231cd28263c8e51633d3b0eeaca9f860f9c2f257ad9c3d141": {
+    "hotel_id": "GRAIS273",
+    "hotel_name": "grand istanbul",
+    "city": "istanbul",
+    "rooms_available": 40,
+    "adult_price": 400,
+    "child_price": 200
+  }
+}

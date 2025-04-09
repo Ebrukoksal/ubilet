@@ -21,35 +21,28 @@ def car_arrangement(admin_username=None):
         else:
             print("Invalid input")
 
-def get_car_id(brand, rental_date, return_date):
-    car_id = brand[0].upper()
-    car_id += rental_date.replace("/", "").upper()
-    car_id += return_date.replace("/", "").upper()
-    
+def get_car_id(brand, car_plate):
+    car_id = brand[0].upper() + car_plate.upper() 
     return car_id
-
 
 def add_car(admin_username=None):
     with open("data/cars.json", "r", encoding="utf-8") as f:
         cars = json.load(f)
 
     brand = get_valid_input("Brand: ").lower()
-    rental_date = get_valid_input("Rental Date: ")
-    return_date = get_valid_input("Return Date: ")
-    cars_available = get_valid_input("Cars Available: ", is_price=True)
+    cars_available = get_valid_input("Number of Available Cars: ", is_price=True)
     price = get_valid_input("Price: ", is_price=True)
+    car_plate = get_valid_input("Car Plate (2 letters + 3 digits): ", is_car_plate=True)
 
-    hashed_car_id = get_hash(brand, rental_date, return_date, price)
-    car_id = get_car_id(brand, rental_date, return_date)
-
+    hashed_car_id = get_hash(brand, car_plate)
+    car_id = get_car_id(brand, car_plate)
 
     cars[hashed_car_id] = {
         "car_id": car_id,
         "brand": brand,
-        "rental_date": rental_date,
-        "return_date": return_date,
         "cars_available": int(cars_available),
-        "price": int(price)
+        "price": int(price),
+        "car_plate": car_plate.upper()
     }
     with open("data/cars.json", "w", encoding="utf-8") as f:
         json.dump(cars, f, ensure_ascii=False, indent=2)
@@ -62,10 +55,9 @@ def add_car(admin_username=None):
             details={
                 "car_id": car_id,
                 "brand": brand,
-                "rental_date": rental_date,
-                "return_date": return_date,
                 "cars_available": int(cars_available),
-                "price": int(price)
+                "price": int(price),
+                "car_plate": car_plate.upper()
             }
         )
     print("Changes saved!")
@@ -88,20 +80,18 @@ def display_cars_table():
     # Table header
     print("\nExisting Cars:")
     print("-" * 100)
-    print(f"{'Voyage Number':<15} {'Brand':<10} {'Rental Date':<15} {'Return Date':<15} {'Cars Available':<10} {'Price':<10}")
+    print(f"{'Car ID':<15} {'Brand':<10} {'Cars Available':<15} {'Price':<10} {'Car Plate':<10}")
     print("-" * 100)
 
     # Table rows
     for car in cars.values():
         print(f"{car['car_id']:<15} "
               f"{car['brand']:<10} "
-              f"{car['rental_date']:<15} "
-              f"{car['return_date']:<15} "
-              f"{car['cars_available']:<10} "
-              f"{car['price']:<10}")
+              f"{car['cars_available']:<15} "
+              f"{car['price']:<10} "
+              f"{car['car_plate']:<10}")
     print("-" * 100)
     print()
-
 
 def remove_car(admin_username=None):
     with open("data/cars.json", "r", encoding="utf-8") as f:
@@ -147,19 +137,21 @@ def update_car(admin_username=None):
 
     if key_to_updating_car in cars:
         old_car_details = cars[key_to_updating_car].copy()
-        key_to_update = input("Enter the detail you want to change (brand/rental_date/return_date/cars_available/price): ").lower()
-        new_value = input(f"Enter the new {key_to_update}: ")
+        key_to_update = input("Enter the detail you want to change (brand/cars_available/price/car_plate): ").lower()
         
-        if key_to_update == "price" or key_to_update == "cars_available":
+        if key_to_update == "car_plate":
+            new_value = get_valid_input(f"Enter the new {key_to_update}: ", is_car_plate=True)
+            cars[key_to_updating_car][key_to_update] = new_value.upper()
+        elif key_to_update == "price" or key_to_update == "cars_available":
+            new_value = input(f"Enter the new {key_to_update}: ")
             cars[key_to_updating_car][key_to_update] = int(new_value)
-            cars[key_to_updating_car]["cars_available"] = int(new_value)
         else:
+            new_value = input(f"Enter the new {key_to_update}: ")
             cars[key_to_updating_car][key_to_update] = new_value.lower()
 
         updated_car_id = get_car_id(
             cars[key_to_updating_car]["brand"],
-            cars[key_to_updating_car]["rental_date"],
-            cars[key_to_updating_car]["return_date"]
+            cars[key_to_updating_car]["car_plate"]
         )
 
         new_key_updated_car = get_hash_with_kwargs(**cars[key_to_updating_car])

@@ -6,6 +6,7 @@
     "arrival": "mardin",
     "date": "01/10/2025",
     "time": "15:30",
-    "price": 300
+    "price": 300,
+    "seat_available": 49
   }
 }
