@@ -22,8 +22,8 @@ def flight_arrangement(admin_username=None):
         else:
             print("Invalid input")
 
-def get_flight_voyage_number(airline, departure, arrival, date, time):
-    voyage_number = airline[0].upper() + departure[0].upper() + arrival[0].upper()
+def get_flight_voyage_number(company, departure, arrival, date, time):
+    voyage_number = company[0].upper() + departure[0].upper() + arrival[0].upper()
     voyage_number += date.replace("/", "")
     voyage_number += time.replace(":", "")
     
@@ -34,19 +34,19 @@ def add_flight(admin_username=None):
     with open("data/flights.json", "r", encoding="utf-8") as f:
         flights = json.load(f)
 
-    airline = get_valid_input("Airline: ").lower()
+    company = get_valid_input("Company: ").lower()
     departure = get_valid_input("Departure: ").lower()
     arrival = get_valid_input("Arrival: ").lower()
     date = get_valid_input("Date: ")
     time_ = get_valid_input("Time: ")
     seat_available = get_valid_input("Seat Available: ", is_price=True)
     price = get_valid_input("Price: ", is_price=True)
-    hashed_flight_id = get_hash(airline, departure, arrival, date, time_, price)
-    voyage_number = get_flight_voyage_number(airline, departure, arrival, date, time_)
+    hashed_flight_id = get_hash(company, departure, arrival, date, time_, price)
+    voyage_number = get_flight_voyage_number(company, departure, arrival, date, time_)
 
     flights[hashed_flight_id] = {
         "voyage_number": voyage_number,
-        "airline": airline,
+        "company": company,
         "departure": departure,
         "arrival": arrival,
         "date": date,
@@ -64,7 +64,7 @@ def add_flight(admin_username=None):
             service_type="flight",
             details={
                 "voyage_number": voyage_number,
-                "airline": airline,
+                "company": company,
                 "departure": departure,
                 "arrival": arrival,
                 "date": date,
@@ -93,13 +93,13 @@ def display_flights_table():
     # Table header
     print("\nExisting Flights:")
     print("-" * 100)
-    print(f"{'Voyage Number':<15} {'Airline':<10} {'From':<15} {'To':<15} {'Date':<12} {'Time':<8} {'Seat Available':<10} {'Price':<10}")
+    print(f"{'Voyage Number':<15} {'Company':<10} {'From':<15} {'To':<15} {'Date':<12} {'Time':<8} {'Seat Available':<10} {'Price':<10}")
     print("-" * 100)
 
     # Table rows
     for flight in flights.values():
         print(f"{flight['voyage_number']:<15} "
-              f"{flight['airline']:<10} "
+              f"{flight['company']:<10} "
               f"{flight['departure']:<15} "
               f"{flight['arrival']:<15} "
               f"{flight['date']:<12} "
@@ -153,7 +153,7 @@ def update_flight(admin_username=None):
 
     if key_to_updating_flight in flights:
         old_flight_details = flights[key_to_updating_flight].copy()
-        key_to_update = input("Enter the detail you want to change (airline/departure/arrival/date/time/seat_available/price): ").lower()
+        key_to_update = input("Enter the detail you want to change (company/departure/arrival/date/time/seat_available/price): ").lower()
         new_value = input(f"Enter the new {key_to_update}: ")
         
         if key_to_update == "price" or key_to_update == "seat_available":
@@ -163,7 +163,7 @@ def update_flight(admin_username=None):
             flights[key_to_updating_flight][key_to_update] = new_value.lower()
 
         updated_voyage_number = get_flight_voyage_number(
-            flights[key_to_updating_flight]["airline"],
+            flights[key_to_updating_flight]["company"],
             flights[key_to_updating_flight]["departure"],
             flights[key_to_updating_flight]["arrival"],
             flights[key_to_updating_flight]["date"],

@@ -45,7 +45,7 @@ def get_valid_input(prompt, is_price=False, is_date=False):
                 continue
         return value
 
-def display_user_tickets(username, service_type=None):
+def display_user_tickets(user, service_type=None):
     """
     Display all tickets and services a user has paid for.
     
@@ -63,7 +63,7 @@ def display_user_tickets(username, service_type=None):
     # Find all payments for the user
     user_payments = []
     for payment_id, payment in payments.items():
-        if payment['customer_name'] == username:
+        if payment["booking_details"]["user"] == user:
             # If service_type is specified, only include payments of that type
             if service_type and payment['service_type'] != service_type:
                 continue
@@ -79,9 +79,9 @@ def display_user_tickets(username, service_type=None):
 
     if not user_payments:
         if service_type:
-            print(f"No {service_type} tickets found for user: {username}")
+            print(f"No {service_type} tickets found for user: {user}")
         else:
-            print(f"No tickets or services found for user: {username}")
+            print(f"No tickets or services found for user: {user}")
         return
 
     # Sort payments by date (newest first)
@@ -89,9 +89,9 @@ def display_user_tickets(username, service_type=None):
 
     # Display user's tickets and services
     if service_type:
-        print(f"\n{service_type.upper()} Tickets for {username}:")
+        print(f"\n{service_type.upper()} Tickets for {user}:")
     else:
-        print(f"\nTickets and Services for {username}:")
+        print(f"\nTickets and Services for {user}:")
     print("-" * 120)
     
     # Group payments by service type

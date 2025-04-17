@@ -2,8 +2,10 @@
   "bddd32c04ccbdd8457d83dfa5a6cdec3ebd9f927020d341f1004b676874ecab4": {
     "car_id": "T121212202520122025",
     "brand": "toyota",
+    "location": "adana",
     "price": 1234,
     "cars_available": 2,
-    "car_plate": "T12121"
+    "car_plate": "T12121",
+    "available": true
   }
 }

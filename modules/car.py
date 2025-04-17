@@ -30,6 +30,7 @@ def add_car(admin_username=None):
         cars = json.load(f)
 
     brand = get_valid_input("Brand: ").lower()
+    location = get_valid_input("Location: ").lower()
     cars_available = get_valid_input("Number of Available Cars: ", is_price=True)
     price = get_valid_input("Price: ", is_price=True)
     car_plate = get_valid_input("Car Plate (2 letters + 3 digits): ", is_car_plate=True)
@@ -40,6 +41,7 @@ def add_car(admin_username=None):
     cars[hashed_car_id] = {
         "car_id": car_id,
         "brand": brand,
+        "location": location,
         "cars_available": int(cars_available),
         "price": int(price),
         "car_plate": car_plate.upper()
@@ -55,6 +57,7 @@ def add_car(admin_username=None):
             details={
                 "car_id": car_id,
                 "brand": brand,
+                "location": location,
                 "cars_available": int(cars_available),
                 "price": int(price),
                 "car_plate": car_plate.upper()
@@ -80,13 +83,14 @@ def display_cars_table():
     # Table header
     print("\nExisting Cars:")
     print("-" * 100)
-    print(f"{'Car ID':<15} {'Brand':<10} {'Cars Available':<15} {'Price':<10} {'Car Plate':<10}")
+    print(f"{'Car ID':<15} {'Brand':<10} {'Location':<10} {'Cars Available':<15} {'Price':<10} {'Car Plate':<10}")
     print("-" * 100)
 
     # Table rows
     for car in cars.values():
         print(f"{car['car_id']:<15} "
               f"{car['brand']:<10} "
+              f"{car['location']:<10} "
               f"{car['cars_available']:<15} "
               f"{car['price']:<10} "
               f"{car['car_plate']:<10}")
@@ -137,7 +141,7 @@ def update_car(admin_username=None):
 
     if key_to_updating_car in cars:
         old_car_details = cars[key_to_updating_car].copy()
-        key_to_update = input("Enter the detail you want to change (brand/cars_available/price/car_plate): ").lower()
+        key_to_update = input("Enter the detail you want to change (brand/location/cars_available/price/car_plate): ").lower()
         
         if key_to_update == "car_plate":
             new_value = get_valid_input(f"Enter the new {key_to_update}: ", is_car_plate=True)
