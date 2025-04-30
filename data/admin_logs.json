@@ -515,5 +515,482 @@
       "rooms_available": 1,
       "price": 1
     }
+  },
+  "2025-04-30 11:48:19": {
+    "timestamp": "2025-04-30 11:48:19",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "flight",
+    "details": {
+      "voyage_number": "TKV121220250330",
+      "company": "thy",
+      "departure": "konya",
+      "arrival": "van",
+      "date": "12/12/2025",
+      "time": "03:30",
+      "seats_available": 50,
+      "price": 123
+    }
+  },
+  "2025-04-30 11:53:07": {
+    "timestamp": "2025-04-30 11:53:07",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "flight",
+    "details": {
+      "old_details": {
+        "voyage_number": "ABC1111112222",
+        "company": "a",
+        "departure": "b",
+        "arrival": "c",
+        "date": "1/1/1111",
+        "time": "22:22",
+        "price": 1234,
+        "seat_available": 50
+      },
+      "new_details": {
+        "voyage_number": "HBC1111112222",
+        "company": "h",
+        "departure": "b",
+        "arrival": "c",
+        "date": "1/1/1111",
+        "time": "22:22",
+        "price": 1234,
+        "seat_available": 50
+      },
+      "changed_field": "company"
+    }
+  },
+  "2025-04-30 11:54:54": {
+    "timestamp": "2025-04-30 11:54:54",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "flight",
+    "details": {
+      "voyage_number": "HBC1111112222",
+      "company": "h",
+      "departure": "b",
+      "arrival": "c",
+      "date": "1/1/1111",
+      "time": "22:22",
+      "price": 1234,
+      "seat_available": 50
+    }
+  },
+  "2025-04-30 12:01:14": {
+    "timestamp": "2025-04-30 12:01:14",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "train",
+    "details": {
+      "voyage_number": "YAE100220251400",
+      "company": "yht",
+      "departure": "adana",
+      "arrival": "eskişehir",
+      "date": "10/02/2025",
+      "time": "14:00",
+      "seats_available": 35,
+      "price": 300
+    }
+  },
+  "2025-04-30 12:02:00": {
+    "timestamp": "2025-04-30 12:02:00",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "train",
+    "details": {
+      "old_details": {
+        "voyage_number": "YAE100220251400",
+        "company": "yht",
+        "departure": "adana",
+        "arrival": "eskişehir",
+        "date": "10/02/2025",
+        "time": "14:00",
+        "seats_available": 35,
+        "price": 300
+      },
+      "new_details": {
+        "voyage_number": "YAE100220251400",
+        "company": "yht",
+        "departure": "adana",
+        "arrival": "eskişehir",
+        "date": "10/02/2025",
+        "time": "14:00",
+        "seats_available": 40,
+        "price": 300
+      },
+      "changed_field": "seats_available"
+    }
+  },
+  "2025-04-30 12:02:22": {
+    "timestamp": "2025-04-30 12:02:22",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "train",
+    "details": {
+      "voyage_number": "ABCde",
+      "company": "a",
+      "departure": "b",
+      "arrival": "c",
+      "date": "d",
+      "time": "e",
+      "seats_available": 4,
+      "price": 4
+    }
+  },
+  "2025-04-30 12:02:56": {
+    "timestamp": "2025-04-30 12:02:56",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "train",
+    "details": {
+      "voyage_number": "ABCde",
+      "company": "a",
+      "departure": "b",
+      "arrival": "c",
+      "date": "d",
+      "time": "e",
+      "seats_available": 4,
+      "price": 4
+    }
+  },
+  "2025-04-30 12:03:59": {
+    "timestamp": "2025-04-30 12:03:59",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "bus",
+    "details": {
+      "voyage_number": "SIT090920251331",
+      "company": "seç",
+      "departure": "izmir",
+      "arrival": "trabzon",
+      "date": "09/09/2025",
+      "time": "13:31",
+      "seats_available": 20,
+      "price": 230
+    }
+  },
+  "2025-04-30 12:12:29": {
+    "timestamp": "2025-04-30 12:12:29",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "bus",
+    "details": {
+      "voyage_number": "SVT101220251212",
+      "company": "seç",
+      "departure": "van",
+      "arrival": "trabzon",
+      "date": "10/12/2025",
+      "time": "12:12",
+      "seats_available": 30,
+      "price": 123
+    }
+  },
+  "2025-04-30 12:13:42": {
+    "timestamp": "2025-04-30 12:13:42",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "bus",
+    "details": {
+      "old_details": {
+        "voyage_number": "SVT101220251212",
+        "company": "seç",
+        "departure": "van",
+        "arrival": "trabzon",
+        "date": "10/12/2025",
+        "time": "12:12",
+        "seats_available": 30,
+        "price": 123
+      },
+      "new_details": {
+        "voyage_number": "SVT101220250520",
+        "company": "seç",
+        "departure": "van",
+        "arrival": "trabzon",
+        "date": "10/12/2025",
+        "time": "05:20",
+        "seats_available": 30,
+        "price": 123
+      },
+      "changed_field": "time"
+    }
+  },
+  "2025-04-30 12:13:58": {
+    "timestamp": "2025-04-30 12:13:58",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "bus",
+    "details": {
+      "voyage_number": "ABCd2",
+      "company": "a",
+      "departure": "b",
+      "arrival": "c",
+      "date": "d",
+      "time": "2",
+      "seats_available": 2,
+      "price": 2
+    }
+  },
+  "2025-04-30 12:14:30": {
+    "timestamp": "2025-04-30 12:14:30",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "bus",
+    "details": {
+      "voyage_number": "ABCd2",
+      "company": "a",
+      "departure": "b",
+      "arrival": "c",
+      "date": "d",
+      "time": "2",
+      "seats_available": 2,
+      "price": 2
+    }
+  },
+  "2025-04-30 12:49:04": {
+    "timestamp": "2025-04-30 12:49:04",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "car_id": "a",
+      "brand": "b",
+      "location": "c",
+      "price": 3
+    }
+  },
+  "2025-04-30 13:03:12": {
+    "timestamp": "2025-04-30 13:03:12",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "car_id": "AAA123",
+      "brand": "a",
+      "location": "b",
+      "cars_available": 10,
+      "price": 100,
+      "car_plate": "AA123"
+    }
+  },
+  "2025-04-30 13:05:40": {
+    "timestamp": "2025-04-30 13:05:40",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "car_id": "AAA123",
+      "brand": "a",
+      "location": "b",
+      "cars_available": 10,
+      "price": 100,
+      "car_plate": "AA123"
+    }
+  },
+  "2025-04-30 13:09:19": {
+    "timestamp": "2025-04-30 13:09:19",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "car_id": "AS342",
+      "brand": "w",
+      "location": "s",
+      "cars_available": 10,
+      "price": 100,
+      "car_plate": "AS342",
+      "available": true
+    }
+  },
+  "2025-04-30 13:13:50": {
+    "timestamp": "2025-04-30 13:13:50",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "brand": "A",
+      "location": "B",
+      "cars_available": 10,
+      "price": 100,
+      "car_plate": "AB123"
+    }
+  },
+  "2025-04-30 13:14:26": {
+    "timestamp": "2025-04-30 13:14:26",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "brand": "toyota",
+      "location": "adana",
+      "cars_available": 10,
+      "price": 500,
+      "car_plate": "EK257"
+    }
+  },
+  "2025-04-30 13:17:08": {
+    "timestamp": "2025-04-30 13:17:08",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "brand": "5",
+      "location": "5",
+      "cars_available": 5,
+      "price": 5,
+      "car_plate": "AA343"
+    }
+  },
+  "2025-04-30 13:19:16": {
+    "timestamp": "2025-04-30 13:19:16",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "car",
+    "details": {
+      "brand": "5",
+      "location": "5",
+      "cars_available": 5,
+      "price": 5,
+      "car_plate": "AA343"
+    }
+  },
+  "2025-04-30 13:30:12": {
+    "timestamp": "2025-04-30 13:30:12",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "car",
+    "details": {
+      "old_details": {
+        "brand": "A",
+        "location": "B",
+        "cars_available": 10,
+        "price": 100,
+        "car_plate": "AB123"
+      },
+      "new_details": {
+        "brand": "Cherry",
+        "location": "B",
+        "cars_available": 10,
+        "price": 100,
+        "car_plate": "AB123"
+      },
+      "changed_field": "brand"
+    }
+  },
+  "2025-04-30 14:46:56": {
+    "timestamp": "2025-04-30 14:46:56",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "car",
+    "details": {
+      "brand": "a",
+      "location": "b",
+      "cars_available": 20,
+      "price": 200,
+      "car_plate": "DD222"
+    }
+  },
+  "2025-04-30 14:47:24": {
+    "timestamp": "2025-04-30 14:47:24",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "car",
+    "details": {
+      "old_details": {
+        "brand": "a",
+        "location": "b",
+        "cars_available": 20,
+        "price": 200,
+        "car_plate": "DD222"
+      },
+      "new_details": {
+        "brand": "a",
+        "location": "b",
+        "cars_available": 20,
+        "price": 100,
+        "car_plate": "DD222"
+      },
+      "changed_field": "price"
+    }
+  },
+  "2025-04-30 14:47:34": {
+    "timestamp": "2025-04-30 14:47:34",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "car",
+    "details": {
+      "brand": "a",
+      "location": "b",
+      "cars_available": 20,
+      "price": 100,
+      "car_plate": "DD222"
+    }
+  },
+  "2025-04-30 15:45:07": {
+    "timestamp": "2025-04-30 15:45:07",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "a",
+      "hotel_name": "a",
+      "location": "b",
+      "rooms_available": 5,
+      "adult_price": 5,
+      "child_price": 4
+    }
+  },
+  "2025-04-30 15:46:09": {
+    "timestamp": "2025-04-30 15:46:09",
+    "admin_username": "a",
+    "action_type": "update",
+    "service_type": "hotel",
+    "details": {
+      "old_details": {
+        "hotel_id": "a",
+        "hotel_name": "a",
+        "location": "b",
+        "rooms_available": 5,
+        "adult_price": 5,
+        "child_price": 4
+      },
+      "new_details": {
+        "hotel_id": "a",
+        "hotel_name": "a",
+        "location": "c",
+        "rooms_available": 5,
+        "adult_price": 5,
+        "child_price": 4
+      },
+      "changed_field": "location"
+    }
+  },
+  "2025-04-30 15:46:23": {
+    "timestamp": "2025-04-30 15:46:23",
+    "admin_username": "a",
+    "action_type": "remove",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "a",
+      "hotel_name": "a",
+      "location": "c",
+      "rooms_available": 5,
+      "adult_price": 5,
+      "child_price": 4
+    }
+  },
+  "2025-04-30 15:50:00": {
+    "timestamp": "2025-04-30 15:50:00",
+    "admin_username": "a",
+    "action_type": "add",
+    "service_type": "hotel",
+    "details": {
+      "hotel_id": "AB402",
+      "hotel_name": "a",
+      "location": "b",
+      "rooms_available": 10,
+      "adult_price": 10,
+      "child_price": 10
+    }
   }
 }

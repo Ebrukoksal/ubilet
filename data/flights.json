@@ -19,14 +19,14 @@
     "price": 100,
     "seat_available": 49
   },
-  "72e7160b091a4d5d91f28228fccd27b15936f15d4487e51b65d3a03a7d9fc21b": {
-    "voyage_number": "ABC1111112222",
-    "company": "a",
-    "departure": "b",
-    "arrival": "c",
-    "date": "1/1/1111",
-    "time": "22:22",
-    "price": 1234,
-    "seat_available": 50
+  "e41a374d839b08baf94319ac3f15b020a3e5cfead50640e81130bc69bb4a298f": {
+    "voyage_number": "TKV121220250330",
+    "company": "thy",
+    "departure": "konya",
+    "arrival": "van",
+    "date": "12/12/2025",
+    "time": "03:30",
+    "seats_available": 50,
+    "price": 123
   }
 }

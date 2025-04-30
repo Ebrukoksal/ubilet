@@ -1,11 +1,16 @@
 {
-  "bddd32c04ccbdd8457d83dfa5a6cdec3ebd9f927020d341f1004b676874ecab4": {
-    "car_id": "T121212202520122025",
+  "6325e012a5895cd13053524d7c51e360b06a956ce58bcacc1616cb9592c0bae3": {
+    "brand": "Cherry",
+    "location": "B",
+    "cars_available": 10,
+    "price": 100,
+    "car_plate": "AB123"
+  },
+  "cd3d772ddd7d3bce2167168b9cb0d82675beffdbac8eee3b79fb303890f55053": {
     "brand": "toyota",
     "location": "adana",
-    "price": 1234,
-    "cars_available": 2,
-    "car_plate": "T12121",
-    "available": true
+    "cars_available": 10,
+    "price": 500,
+    "car_plate": "EK257"
   }
 }

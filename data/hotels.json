@@ -22,5 +22,13 @@
     "rooms_available": 39,
     "adult_price": 400,
     "child_price": 200
+  },
+  "e80fb65ac70384bd8bab0358d60b7cbe96de5b2de7c095e0d8695852e9c673af": {
+    "hotel_id": "AB402",
+    "hotel_name": "a",
+    "location": "b",
+    "rooms_available": 10,
+    "adult_price": 10,
+    "child_price": 10
   }
 }

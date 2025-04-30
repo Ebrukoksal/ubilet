@@ -8,5 +8,15 @@
     "time": "15:30",
     "price": 300,
     "seat_available": 49
+  },
+  "f1ab565c283a8acef433a0cb12de16db67c685d2ee9ff1711f6442dc34301c32": {
+    "voyage_number": "SVT101220250520",
+    "company": "seç",
+    "departure": "van",
+    "arrival": "trabzon",
+    "date": "10/12/2025",
+    "time": "05:20",
+    "seats_available": 30,
+    "price": 123
   }
 }

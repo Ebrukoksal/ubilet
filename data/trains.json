@@ -8,5 +8,15 @@
     "time": "10:15",
     "price": 250,
     "seat_available": 47
+  },
+  "1d99ba829239b502acb527dda444432d6064228df51f62cb355a73758ad59585": {
+    "voyage_number": "YAE100220251400",
+    "company": "yht",
+    "departure": "adana",
+    "arrival": "eskişehir",
+    "date": "10/02/2025",
+    "time": "14:00",
+    "seats_available": 40,
+    "price": 300
   }
 }
